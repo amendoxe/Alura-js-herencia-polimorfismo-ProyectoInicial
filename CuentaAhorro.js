@@ -1,3 +1,5 @@
+import { Cliente } from "./Cliente.js";
+import { CuentaCorriente } from "./CuentaCorriente.js";
 export class cuentaAhorro {
 	#cliente;
 	#saldo;
@@ -11,11 +13,11 @@ export class cuentaAhorro {
 		return this.#cliente;
 	}
 
-	constructor(cliente, numero, agencia) {
-		this.cliente = cliente;
+	constructor(cliente, numero, agencia, saldo) {
 		this.numero = numero;
 		this.agencia = agencia;
-		this.#saldo = 0;
+		this.#cliente = cliente;
+		this.#saldo = saldo;
 		CuentaCorriente.cantidadCuentas++;
 	}
 
