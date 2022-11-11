@@ -1,10 +1,13 @@
-import {} from "./Cliente.js";
-import { CuentaCorriente } from "./CuentaCorriente.js";
 export class Cuenta {
 	#cliente;
 	#saldo;
 
-	static cantidadCuentas = 0;
+	constructor(cliente, numero, agencia, saldo) {
+		this.numero = numero;
+		this.agencia = agencia;
+		this.#cliente = cliente;
+		this.#saldo = saldo;
+	}
 
 	set cliente(valor) {
 		if (valor instanceof Cliente) this.#cliente = valor;
@@ -14,21 +17,17 @@ export class Cuenta {
 		return this.#cliente;
 	}
 
-	constructor(tipo, cliente, numero, agencia, saldo) {
-		this.tipo = tipo;
-		this.numero = numero;
-		this.agencia = agencia;
-		this.#cliente = cliente;
-		this.#saldo = saldo;
-		CuentaCorriente.cantidadCuentas++;
-	}
-
 	depositoEnCuenta(valor) {
 		if (valor > 0) this.#saldo += valor;
 		return this.#saldo;
 	}
 
 	retirarDeCuenta(valor) {
+		_retirarDeCuenta(valor, 0);
+	}
+
+	_retirarDeCuenta(valor, comision) {
+		valor = valor * (1 + comision / 100);
 		if (valor <= this.#saldo) this.#saldo -= valor;
 		return this.#saldo;
 	}
@@ -42,5 +41,9 @@ export class Cuenta {
 		cuentaDestino.depositoEnCuenta(valor);
 		valor = 200;
 		valor = valor * 1000;
+	}
+
+	prueba() {
+		console.log("Método padre");
 	}
 }
