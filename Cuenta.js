@@ -1,10 +1,9 @@
-import { Cliente } from "./Cliente.js";
-
-export class CuentaCorriente {
+import {} from "./Cliente.js";
+import { CuentaCorriente } from "./CuentaCorriente.js";
+export class Cuenta {
 	#cliente;
-	numero;
-	agencia;
 	#saldo;
+
 	static cantidadCuentas = 0;
 
 	set cliente(valor) {
@@ -15,12 +14,12 @@ export class CuentaCorriente {
 		return this.#cliente;
 	}
 
-	constructor(tipo, cliente, numero, agencia) {
+	constructor(tipo, cliente, numero, agencia, saldo) {
 		this.tipo = tipo;
-		this.cliente = cliente;
 		this.numero = numero;
 		this.agencia = agencia;
-		this.#saldo = 0;
+		this.#cliente = cliente;
+		this.#saldo = saldo;
 		CuentaCorriente.cantidadCuentas++;
 	}
 
@@ -30,7 +29,6 @@ export class CuentaCorriente {
 	}
 
 	retirarDeCuenta(valor) {
-		if (this.tipo === "corriente") valor = valor * 1.05;
 		if (valor <= this.#saldo) this.#saldo -= valor;
 		return this.#saldo;
 	}
