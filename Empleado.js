@@ -7,4 +7,5 @@ export class Empleado {
 		this.#numero = numero;
 		this.#salario = salario;
 	}
+	bono() {}
 }
