@@ -8,4 +8,8 @@ export class Gerente extends Empleado {
 	showName() {
 		super.showName();
 	}
+	verBonificacion() {
+		const bono = 5;
+		return super._bonificacion(bono);
+	}
 }

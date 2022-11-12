@@ -7,4 +7,11 @@ export class Director extends Empleado {
 	showName() {
 		super.showName();
 	}
+	verBonificacion() {
+		const bono = 10;
+		return super._bonificacion(bono);
+	}
+	showSalario() {
+		super._showSalario();
+	}
 }
